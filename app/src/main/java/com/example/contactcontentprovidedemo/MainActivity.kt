@@ -1,5 +1,6 @@
 package com.example.contactcontentprovidedemo
 
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.provider.ContactsContract
@@ -35,6 +36,10 @@ class MainActivity : AppCompatActivity() {
         } else {
             readContact()
         }
+
+        button.setOnClickListener {
+            startActivity(Intent(this, CallLogActivity::class.java))
+        }
     }
 
     override fun onRequestPermissionsResult(
@@ -48,19 +53,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun readContact() {
-        var from = listOf(
+        val from = listOf(
             ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
             ContactsContract.CommonDataKinds.Phone.NUMBER
         ).toTypedArray()
 
-        var to = intArrayOf(android.R.id.text1, android.R.id.text2)
+        val to = intArrayOf(android.R.id.text1, android.R.id.text2)
 
         var rs = contentResolver.query(
             ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
             cols, null, null, ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME
         )
 
-        var adapter =
+        val adapter =
             SimpleCursorAdapter(this, android.R.layout.simple_list_item_2, rs, from, to, 0)
         listview1.adapter = adapter
 

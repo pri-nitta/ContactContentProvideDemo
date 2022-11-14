@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ContactContentProvideDemo</string>
+    <string name="go_to_call_logs">Go to Call logs</string>
 </resources>
