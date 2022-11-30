@@ -40,6 +40,10 @@ class MainActivity : AppCompatActivity() {
         button.setOnClickListener {
             startActivity(Intent(this, CallLogActivity::class.java))
         }
+
+        button2.setOnClickListener {
+            startActivity(Intent(this, ReadImagesActivity::class.java))
+        }
     }
 
     override fun onRequestPermissionsResult(
